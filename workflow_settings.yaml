@@ -1,4 +1,4 @@
-defaultProject: gcp-dataform-terraform-project
-defaultLocation: australia-southeast2
-defaultDataset: dataform
-defaultAssertionDataset: dataform_assertions
+defaultDatabase: "gcp-dataform-terraform-project"
+defaultSchema: "dataform_dataset"
+warehouse: "bigquery"
+
