@@ -8,7 +8,7 @@
       "test": "dataform run --dry-run"
     },
     "dependencies": {
-      "@dataform/core": "^1.0.0"
+      "@dataform/core": "^3.0.0-beta.0"
     },
     "author": "Jake Lasslett",
     "license": "ISC"
