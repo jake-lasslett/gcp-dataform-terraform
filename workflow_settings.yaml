@@ -1,0 +1,5 @@
+dataformCoreVersion: 3.0.8
+defaultProject: gcp-dataform-terraform-project
+defaultLocation: australia-southeast2
+defaultDataset: dataform
+defaultAssertionDataset: dataform_assertions
