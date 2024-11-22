@@ -1,25 +1,15 @@
+// definitions/validate_customers.sqlx
+
 config {
-  type: "table",
-  schema: "${dataform.projectConfig.defaultDataset}",
-  name: "staging_customers",
-  description: "Staging table for raw customers data from CSV."
+  type: "assertion",
+  schema: "analytics",
+  name: "customers_email_not_null",
+  description: "Ensures that all customers have a valid email address."
 }
 
 SELECT
-  CAST(customer_id AS INT64) AS customer_id,
-  name,
-  email,
-  DATE(registration_date) AS registration_date
+  COUNT(*) AS invalid_email_count
 FROM
-  EXTERNAL_QUERY(
-    'projects/gcp-dataform-terraform-project/locations/australia-southeast2/connections/gcs-connection',
-    '''
-    SELECT
-      customer_id,
-      name,
-      email,
-      registration_date
-    FROM
-      `dataform-ingest-gcp-dataform-terraform-project.orders.csv`
-    '''
-  )
+  ref("customers")
+WHERE
+  email IS NULL OR email = ''
