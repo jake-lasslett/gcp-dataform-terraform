@@ -1,0 +1,16 @@
+{
+    "name": "gcp-dataform-terraform",
+    "version": "1.0.0",
+    "description": "Dataform project for GCP Dataform Terraform integration",
+    "main": "index.js",
+    "scripts": {
+      "start": "dataform run",
+      "test": "dataform run --dry-run"
+    },
+    "dependencies": {
+      "@dataform/core": "^1.0.0"
+    },
+    "author": "Jake Lasslett",
+    "license": "ISC"
+  }
+  

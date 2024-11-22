@@ -1,0 +1,7 @@
+{
+    "warehouse": "bigquery",
+    "defaultSchema": "dataform_dataset",
+    "assertionSchema": "dataform_dataset_assertions",
+    "defaultDatabase": "gcp-dataform-terraform-project"
+  }
+  
