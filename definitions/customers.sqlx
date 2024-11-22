@@ -1,0 +1,16 @@
+// definitions/customers.sqlx
+
+config {
+  type: "source",
+  schema: "raw_data", // Schema where raw data resides
+  name: "customers",
+  description: "Raw customer data imported from CSV files."
+}
+
+SELECT
+  CAST(customer_id AS INT64) AS customer_id,
+  name,
+  email,
+  PARSE_DATE('%Y-%m-%d', registration_date) AS registration_date
+FROM
+  external_data.customers_csv

@@ -1,0 +1,18 @@
+// definitions/orders.sqlx
+
+config {
+  type: "source",
+  schema: "raw_data",
+  name: "orders",
+  description: "Raw order data imported from CSV files."
+}
+
+SELECT
+  CAST(order_id AS INT64) AS order_id,
+  CAST(customer_id AS INT64) AS customer_id,
+  CAST(product_id AS INT64) AS product_id,
+  CAST(quantity AS INT64) AS quantity,
+  CAST(price AS FLOAT64) AS price,
+  PARSE_DATE('%Y-%m-%d', order_date) AS order_date
+FROM
+  external_data.orders_csv

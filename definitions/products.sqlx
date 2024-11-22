@@ -1,0 +1,16 @@
+// definitions/products.sqlx
+
+config {
+  type: "source",
+  schema: "raw_data",
+  name: "products",
+  description: "Raw product data imported from CSV files."
+}
+
+SELECT
+  CAST(product_id AS INT64) AS product_id,
+  name,
+  category,
+  CAST(price AS FLOAT64) AS price
+FROM
+  external_data.products_csv

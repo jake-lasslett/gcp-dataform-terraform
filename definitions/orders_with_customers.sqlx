@@ -1,0 +1,32 @@
+// definitions/orders_with_customers.sqlx
+
+config {
+  type: "table",
+  schema: "analytics",
+  name: "orders_with_customers",
+  description: "Joined order data with customer and product information."
+}
+
+/*
+  This table joins orders with customers and products to provide comprehensive order details.
+  It enables analysis on customer purchasing behavior and product performance.
+*/
+SELECT
+  o.order_id,
+  o.customer_id,
+  c.name AS customer_name,
+  o.product_id,
+  p.name AS product_name,
+  o.quantity,
+  o.price,
+  o.order_date
+FROM
+  ref("orders") o
+LEFT JOIN
+  ref("customers") c
+ON
+  o.customer_id = c.customer_id
+LEFT JOIN
+  ref("products") p
+ON
+  o.product_id = p.product_id

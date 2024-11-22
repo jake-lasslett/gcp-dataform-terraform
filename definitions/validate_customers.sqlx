@@ -1,0 +1,25 @@
+config {
+  type: "table",
+  schema: "${dataform.projectConfig.defaultDataset}",
+  name: "staging_customers",
+  description: "Staging table for raw customers data from CSV."
+}
+
+SELECT
+  CAST(customer_id AS INT64) AS customer_id,
+  name,
+  email,
+  DATE(registration_date) AS registration_date
+FROM
+  EXTERNAL_QUERY(
+    'projects/gcp-dataform-terraform-project/locations/australia-southeast2/connections/gcs-connection',
+    '''
+    SELECT
+      customer_id,
+      name,
+      email,
+      registration_date
+    FROM
+      `dataform-ingest-gcp-dataform-terraform-project.orders.csv`
+    '''
+  )
